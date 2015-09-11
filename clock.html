@@ -1,0 +1,57 @@
+<!-- 1. Write a JavaScript program to display the current day and time in the following format. Go to the editor -->
+<!-- Sample Output : Today is : Friday.  -->
+<!-- Current time is : 4 PM : 50 : 22 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<title>Javascript Clock</title>
+	<link href='http://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+	<script type="text/javascript">
+		var startTime = function(){
+			var today = new Date();
+			var day = today.getDay();
+			var hour = today.getHours();
+					if(hour > 12){
+						hour = hour - 14;
+					}
+			var min = today.getMinutes();
+			var s = today.getSeconds();
+
+			min = checkTime(min);
+			s = checkTime(s);
+			document.getElementById('txt').innerHTML = day + hour+":"+min+":"+s;
+			var t = setTimeout(function(){startTime()}, 500);
+		}
+		var checkTime = function(i){
+			if(i<10){i = "0"+i}
+			return i;
+		}
+
+	</script>
+	<style type="text/css">
+		#txt{
+			width: 80%;
+			height: 80%;
+			margin-top: 10%;
+			margin-right: 10%;
+			display: inline-block;
+			color: blue;
+			font-size: 10rem;
+			font-family: 'Fredericka the Great', cursive;
+			float: right;
+			text-align: center;
+		}
+
+		#txt:hover{
+			color: green;
+		}
+	</style>
+</head>
+<body onload = "startTime()">
+
+<div id="txt"></div>
+
+</body>
+</html>
